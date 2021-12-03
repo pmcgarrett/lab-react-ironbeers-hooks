@@ -1,21 +1,32 @@
-import React from 'react';
+
 import axios from "axios";
 import Header from './Header';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './Beers.css';
 
-class Beers extends React.Component {
-    state = {
-        beers: [],
-    }
+function Beers  {
+    const [beers,setBeers] = useState([]);
+    
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get("https://ih-beers-api2.herokuapp.com/beers");
+            setBeers(response.data);
+        }
+    },[])
+    
+    // state = {
+    //     beers: [],
+    // }
 
-    async componentDidMount() {
-        const res = await axios.get("https://ih-beers-api2.herokuapp.com/beers");
-        this.setState({
-            beers: res.data,
-        });
-    }
-
+    // async componentDidMount() {
+    //     const res = await axios.get("https://ih-beers-api2.herokuapp.com/beers");
+    //     this.setState({
+    //         beers: res.data,
+    //     });
+    // }
+    
     render() {
         const { beers } = this.state;
         return (
