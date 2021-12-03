@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Beers from './components/Beers';
 import BeerDetails from './components/BeerDetails';
@@ -9,15 +9,14 @@ import NewBeer from './components/NewBeer';
 
 function App() {
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/beers" component={Beers} />
-        <Route exact path="/random-beer" component={RandomBeer} />
-        <Route exact path="/new-beer" component={NewBeer} />
-        <Route path="/:id" component={BeerDetails} />
-      </Switch>
-
+    <div className="App">  
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/beers" element={<Beers />} />
+        <Route exact path="/random-beer" element={<RandomBeer />} />
+        <Route exact path="/new-beer" element={<NewBeer />} />
+        <Route path="/:id" element={<BeerDetails />} />
+      </Routes>
     </div>
   );
 }
